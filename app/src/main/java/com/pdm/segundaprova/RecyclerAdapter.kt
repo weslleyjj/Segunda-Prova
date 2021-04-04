@@ -32,13 +32,13 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
         init {
             itemKode = itemView.findViewById(R.id.modeloVeiculo)
-            itemKategori = itemView.findViewById(R.id.kategori)
-            itemIsi = itemView.findViewById(R.id.isiPertanyaan)
+            itemKategori = itemView.findViewById(R.id.anoVeiculo)
+            itemIsi = itemView.findViewById(R.id.precoVeiculo)
 
             itemView.setOnClickListener {
                 val position: Int = adapterPosition
                 val context = itemView.context
-                val intent = Intent(context, HomeFragment::class.java).apply {
+                val intent = Intent(context, MainActivity::class.java).apply {
                     putExtra("NUMBER", position)
                     putExtra("CODE", itemKode.text)
                     putExtra("CATEGORY", itemKategori.text)

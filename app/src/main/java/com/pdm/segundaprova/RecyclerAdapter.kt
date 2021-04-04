@@ -26,23 +26,23 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var itemKode: TextView
-        var itemKategori: TextView
-        var itemIsi: TextView
+        var modelo: TextView
+        var ano: TextView
+        var preco: TextView
 
         init {
-            itemKode = itemView.findViewById(R.id.modeloVeiculo)
-            itemKategori = itemView.findViewById(R.id.anoVeiculo)
-            itemIsi = itemView.findViewById(R.id.precoVeiculo)
+            modelo = itemView.findViewById(R.id.modeloVeiculo)
+            ano = itemView.findViewById(R.id.anoVeiculo)
+            preco = itemView.findViewById(R.id.precoVeiculo)
 
             itemView.setOnClickListener {
                 val position: Int = adapterPosition
                 val context = itemView.context
                 val intent = Intent(context, MainActivity::class.java).apply {
                     putExtra("NUMBER", position)
-                    putExtra("CODE", itemKode.text)
-                    putExtra("CATEGORY", itemKategori.text)
-                    putExtra("CONTENT", itemIsi.text)
+                    putExtra("CODE", modelo.text)
+                    putExtra("CATEGORY", ano.text)
+                    putExtra("CONTENT", preco.text)
                 }
                 context.startActivity(intent)
             }
@@ -56,9 +56,9 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
-        viewHolder.itemKode.text = kode[i]
-        viewHolder.itemKategori.text = kategori[i]
-        viewHolder.itemIsi.text = isi[i]
+        viewHolder.modelo.text = kode[i]
+        viewHolder.ano.text = kategori[i]
+        viewHolder.preco.text = isi[i]
 
     }
 

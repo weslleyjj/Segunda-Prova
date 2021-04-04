@@ -26,8 +26,6 @@ class HomeFragment : Fragment() {
 
         viewmodel = ViewModelProvider(this).get(HomeFragmentViewModel::class.java)
 
-
-
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 

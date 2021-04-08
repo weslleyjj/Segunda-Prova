@@ -5,4 +5,14 @@
     <string name="exemplo">Modelo Aqui</string>
     <string name="exemploAno">Ano Aqui</string>
     <string name="exemploPreco">Preço Aqui</string>
+    <string name="nao">NÃO</string>
+    <string name="sim">SIM</string>
+    <string name="modelo">Modelo</string>
+    <string name="cor">Cor</string>
+    <string name="ano">Ano</string>
+    <string name="preco">Preço</string>
+    <string name="estoque">Estoque</string>
+    <string name="pronta_entrega">Pronta Entrega</string>
+    <string name="salvar">Salvar</string>
+    <string name="cancelar">Cancelar</string>
 </resources>

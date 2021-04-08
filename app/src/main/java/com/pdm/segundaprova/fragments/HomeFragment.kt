@@ -1,4 +1,4 @@
-package com.pdm.segundaprova
+package com.pdm.segundaprova.fragments
 
 
 import android.os.Bundle
@@ -9,7 +9,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.pdm.segundaprova.R
+import com.pdm.segundaprova.adapters.RecyclerAdapter
 import com.pdm.segundaprova.data.Veiculo
 import com.pdm.segundaprova.viewModels.HomeFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_home.*

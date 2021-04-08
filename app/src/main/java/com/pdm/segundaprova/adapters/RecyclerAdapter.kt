@@ -1,14 +1,13 @@
-package com.pdm.segundaprova
+package com.pdm.segundaprova.adapters
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import com.pdm.segundaprova.MainActivity
+import com.pdm.segundaprova.R
 import com.pdm.segundaprova.data.Veiculo
 
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {

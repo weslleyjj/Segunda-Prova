@@ -13,7 +13,8 @@ class VeiculoRepository(context: Context) {
             .build()
     }
 
-
-
+    fun getDB() : AppDatabase{
+        return db;
+    }
 
 }

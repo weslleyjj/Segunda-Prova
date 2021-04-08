@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.pdm.segundaprova.data.Veiculo
 import com.pdm.segundaprova.viewModels.HomeFragmentViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -16,7 +18,9 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
-    lateinit var viewmodel: HomeFragmentViewModel
+    lateinit var viewModel: HomeFragmentViewModel
+    val adapterHome = RecyclerAdapter()
+    lateinit var layout: LinearLayoutManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +28,14 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        viewmodel = ViewModelProvider(this).get(HomeFragmentViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(HomeFragmentViewModel::class.java)
+
+        viewModel.list.observe(viewLifecycleOwner, Observer {
+            adapterHome.veiculos = it as MutableList<Veiculo>
+            adapterHome.notifyDataSetChanged()
+        })
+
+        layout = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
@@ -34,9 +45,10 @@ class HomeFragment : Fragment() {
         recycler_view.apply {
             // set a LinearLayoutManager to handle Android
             // RecyclerView behavior
-            layoutManager = LinearLayoutManager(activity)
+            layoutManager = layout
             // set the custom adapter to the RecyclerView
-            adapter = RecyclerAdapter()
+            adapter = adapterHome
+
         }
     }
 

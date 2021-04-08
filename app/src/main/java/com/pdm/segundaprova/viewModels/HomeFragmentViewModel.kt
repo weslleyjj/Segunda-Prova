@@ -3,13 +3,16 @@ package com.pdm.segundaprova.viewModels
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
 import com.pdm.segundaprova.data.AppDatabase
 import com.pdm.segundaprova.data.Veiculo
 
 class HomeFragmentViewModel(application : Application) : AndroidViewModel(application) {
 
-    var list: LiveData<List<Veiculo>>
+    private lateinit var mlist: LiveData<List<Veiculo>>
+    lateinit var list : LiveData<List<Veiculo>>
+
 
     init{
         val db: AppDatabase by lazy {
@@ -19,8 +22,8 @@ class HomeFragmentViewModel(application : Application) : AndroidViewModel(applic
                 .allowMainThreadQueries()
                 .build()
         }
-
-        list = db.veiculoDao().listAll()
+        mlist = db.veiculoDao().listAll()
+        list = mlist
     }
 
 }

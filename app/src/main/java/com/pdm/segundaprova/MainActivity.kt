@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        /*
+
         val v1 = Veiculo(0, "Prisma", "Prata", 2017,
             40000f, 10, true)
 
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             inserir(v3)
             inserir(v4)
 
-        }*/
+        }
 
     }
 

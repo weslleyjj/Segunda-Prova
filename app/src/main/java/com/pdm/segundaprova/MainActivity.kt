@@ -1,8 +1,8 @@
 package com.pdm.segundaprova
 
-import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import androidx.room.Room
 import com.pdm.segundaprova.data.AppDatabase
 import com.pdm.segundaprova.data.Veiculo
@@ -10,18 +10,16 @@ import com.pdm.segundaprova.fragments.CadastraFragment
 
 class MainActivity : AppCompatActivity() {
 
-    val db: AppDatabase by lazy {
-        Room.databaseBuilder(
-            this,
-            AppDatabase::class.java, "veiculos-database")
-            .allowMainThreadQueries()
-            .build()
-    }
-
+    private lateinit var customBar : Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        customBar = findViewById(R.id.customActionBar)
+
+        this.setSupportActionBar(customBar)
+
 
         /*
         val v1 = Veiculo(0, "Prisma", "Prata", 2017,

@@ -5,7 +5,7 @@ import androidx.room.Room
 
 class VeiculoRepository(context: Context) {
 
-    val db: AppDatabase by lazy {
+    private val db: AppDatabase by lazy {
         Room.databaseBuilder(
             context,
             AppDatabase::class.java, "veiculos-database")

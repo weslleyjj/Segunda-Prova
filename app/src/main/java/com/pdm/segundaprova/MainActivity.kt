@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.room.Room
 import com.pdm.segundaprova.data.AppDatabase
 import com.pdm.segundaprova.data.Veiculo
+import com.pdm.segundaprova.fragments.CadastraFragment
 
 class MainActivity : AppCompatActivity() {
 

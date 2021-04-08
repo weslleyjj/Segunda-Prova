@@ -6,13 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.pdm.segundaprova.MainActivity
 import com.pdm.segundaprova.R
 import com.pdm.segundaprova.data.Veiculo
+import com.pdm.segundaprova.fragments.CadastraFragment
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.Navigation
 
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     var veiculos = mutableListOf<Veiculo>()
+
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -26,15 +29,9 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
             preco = itemView.findViewById(R.id.precoVeiculo)
 
             itemView.setOnClickListener {
-                val position: Int = adapterPosition
-                val context = itemView.context
-                val intent = Intent(context, MainActivity::class.java).apply {
-                    putExtra("NUMBER", position)
-                    putExtra("CODE", modelo.text)
-                    putExtra("CATEGORY", ano.text)
-                    putExtra("CONTENT", preco.text)
-                }
-                context.startActivity(intent)
+
+                Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_cadastraFragment)
+
             }
         }
     }

@@ -16,4 +16,6 @@
     <string name="salvar">Salvar</string>
     <string name="cancelar">Cancelar</string>
     <string name="adicionar">Adicionar</string>
+    <string name="voltar">Voltar</string>
+    <string name="editar">Editar</string>
 </resources>

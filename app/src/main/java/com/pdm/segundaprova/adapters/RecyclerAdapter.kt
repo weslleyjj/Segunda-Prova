@@ -34,7 +34,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
             itemView.setOnClickListener {
 
-                Navigation.findNavController(it).navigate(HomeFragmentDirections.actionHomeFragmentToAlteraFragment(id))
+                Navigation.findNavController(it).navigate(HomeFragmentDirections.actionHomeFragmentToDetalhesFragment(id))
 
             }
         }

@@ -1,6 +1,7 @@
 package com.pdm.segundaprova.adapters
 
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,8 @@ import com.pdm.segundaprova.data.Veiculo
 import com.pdm.segundaprova.fragments.CadastraFragment
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.Navigation
+import com.pdm.segundaprova.fragments.AlteraFragment
+import com.pdm.segundaprova.fragments.HomeFragmentDirections
 
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
@@ -22,6 +25,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
         var modelo: TextView
         var ano: TextView
         var preco: TextView
+        var id = 0
 
         init {
             modelo = itemView.findViewById(R.id.modeloVeiculo)
@@ -30,7 +34,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
             itemView.setOnClickListener {
 
-                Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_cadastraFragment)
+                Navigation.findNavController(it).navigate(HomeFragmentDirections.actionHomeFragmentToAlteraFragment(id))
 
             }
         }
@@ -43,6 +47,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
+        viewHolder.id = veiculos[i].id
         viewHolder.modelo.text = veiculos[i].modelo
         viewHolder.ano.text = veiculos[i].ano.toString()
         viewHolder.preco.text = veiculos[i].preco.toString()

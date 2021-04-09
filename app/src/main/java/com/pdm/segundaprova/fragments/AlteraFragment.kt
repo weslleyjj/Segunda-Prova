@@ -8,34 +8,44 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.pdm.segundaprova.R
-import com.pdm.segundaprova.adapters.RecyclerAdapter
 import com.pdm.segundaprova.data.Veiculo
 import com.pdm.segundaprova.data.VeiculoRepository
+import com.pdm.segundaprova.databinding.AlteraFragmentBinding
 import com.pdm.segundaprova.databinding.FragmentCadastraBinding
 import com.pdm.segundaprova.viewModels.CadastraFragmentViewModel
-import com.pdm.segundaprova.viewModels.HomeFragmentViewModel
-import kotlinx.android.synthetic.main.fragment_home.*
-import java.util.Observer
 
-class CadastraFragment : Fragment(){
+class AlteraFragment : Fragment(){
 
-    lateinit var viewModel: CadastraFragmentViewModel
-    lateinit var binding : FragmentCadastraBinding
+    lateinit var binding : AlteraFragmentBinding
     lateinit var repository : VeiculoRepository
+    lateinit var veiculo : Veiculo
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
 
-        viewModel = ViewModelProvider(this).get(CadastraFragmentViewModel::class.java)
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_cadastra, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.altera_fragment, container, false)
         repository = VeiculoRepository(inflater.context)
 
+        val args = AlteraFragmentArgs.fromBundle(requireArguments())
+
+        veiculo = repository.getDB().veiculoDao().findById(args.idVeiculo)
+
+        with(binding){
+            modeloEdit.setText(veiculo.modelo)
+            corEdit.setText(veiculo.cor)
+            anoEdit.setText(veiculo.ano.toString())
+            precoEdit.setText(veiculo.preco.toInt().toString())
+            estoqueEdit.setText(veiculo.estoque.toString())
+            pEntregaId.isChecked = veiculo.prontaEntrega
+        }
+
+
         binding.salvar.setOnClickListener {
-            with(viewModel.dados){
+
+            with(veiculo){
                 modelo = binding.modeloEdit.text.toString()
                 cor = binding.corEdit.text.toString()
                 ano =  binding.anoEdit.text.toString().toInt()
@@ -43,13 +53,14 @@ class CadastraFragment : Fragment(){
                 preco =  binding.precoEdit.text.toString().toFloat()
                 prontaEntrega =  binding.pEntregaId.isChecked
             }
-            repository.getDB().veiculoDao().inserir(viewModel.dados)
-            Navigation.findNavController(it).navigate(R.id.action_cadastraFragment_to_homeFragment)
+
+            repository.getDB().veiculoDao().atualizar(veiculo)
+            Navigation.findNavController(it).navigate(R.id.action_alteraFragment_to_homeFragment)
 
         }
 
         binding.cancelar.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_cadastraFragment_to_homeFragment)
+            Navigation.findNavController(it).navigate(R.id.action_alteraFragment_to_homeFragment)
         }
 
         return binding.root

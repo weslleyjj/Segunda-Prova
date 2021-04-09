@@ -2,7 +2,11 @@ package com.pdm.segundaprova
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import androidx.navigation.Navigation
 import androidx.room.Room
 import com.pdm.segundaprova.data.AppDatabase
 import com.pdm.segundaprova.data.Veiculo
@@ -42,6 +46,24 @@ class MainActivity : AppCompatActivity() {
 
         }*/
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.title){
+            "Adicionar" -> {
+                Navigation.findNavController(this, R.id.myNavHostFragment).navigate(R.id.action_homeFragment_to_cadastraFragment)
+            }
+        }
+
+
+        return super.onOptionsItemSelected(item)
     }
 
     //Fazer utilização do banco com corrotinas do kotlin no lugar de asyncTask

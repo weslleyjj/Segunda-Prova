@@ -125,62 +125,62 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="8"
+            android:hint="@string/modelo"
             android:inputType="textPersonName"
-            android:text="Name"
+            app:layout_constraintBottom_toBottomOf="@id/textView"
             app:layout_constraintLeft_toRightOf="@+id/textView"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView"
-            app:layout_constraintBottom_toBottomOf="@id/textView" />
+            app:layout_constraintTop_toTopOf="@+id/textView" />
 
         <EditText
             android:id="@+id/corEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="8"
+            android:hint="@string/cor"
             android:inputType="textPersonName"
-            android:text="Name"
+            app:layout_constraintBottom_toBottomOf="@id/textView2"
             app:layout_constraintLeft_toRightOf="@+id/textView2"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView2"
-            app:layout_constraintBottom_toBottomOf="@id/textView2"
 
-            />
+            app:layout_constraintTop_toTopOf="@+id/textView2" />
 
         <EditText
             android:id="@+id/anoEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="8"
+            android:hint="ano"
             android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="@id/textView3"
             app:layout_constraintLeft_toRightOf="@+id/textView3"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView3"
-            app:layout_constraintBottom_toBottomOf="@id/textView3"
 
-            />
+            app:layout_constraintTop_toTopOf="@+id/textView3" />
 
         <EditText
             android:id="@+id/precoEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="8"
+            android:hint="@string/preco"
             android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="@id/textView4"
             app:layout_constraintLeft_toRightOf="@+id/textView4"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView4"
-            app:layout_constraintBottom_toBottomOf="@id/textView4"
-            />
+            app:layout_constraintTop_toTopOf="@+id/textView4" />
 
         <EditText
             android:id="@+id/estoqueEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="8"
+            android:hint="@string/estoque"
             android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="@id/textView5"
             app:layout_constraintLeft_toRightOf="@+id/textView5"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView5"
-            app:layout_constraintBottom_toBottomOf="@id/textView5" />
+            app:layout_constraintTop_toTopOf="@+id/textView5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

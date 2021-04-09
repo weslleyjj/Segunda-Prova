@@ -33,9 +33,11 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
             preco = itemView.findViewById(R.id.precoVeiculo)
 
             itemView.setOnClickListener {
-
                 Navigation.findNavController(it).navigate(HomeFragmentDirections.actionHomeFragmentToDetalhesFragment(id))
-
+            }
+            itemView.setOnLongClickListener {
+                Navigation.findNavController(it).navigate(HomeFragmentDirections.actionHomeFragmentToAlteraFragment(id))
+                return@setOnLongClickListener true
             }
         }
     }

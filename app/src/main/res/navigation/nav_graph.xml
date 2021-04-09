@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_homeFragment_to_detalhesFragment"
             app:destination="@id/detalhesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_alteraFragment"
+            app:destination="@id/alteraFragment" />
     </fragment>
     <fragment
         android:id="@+id/cadastraFragment"

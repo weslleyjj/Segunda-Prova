@@ -6,66 +6,35 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.ActivityNavigatorDestinationBuilder
 import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 import androidx.room.Room
 import com.pdm.segundaprova.data.AppDatabase
 import com.pdm.segundaprova.data.Veiculo
+import com.pdm.segundaprova.databinding.ActivityMainBinding
 import com.pdm.segundaprova.fragments.CadastraFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var customBar : Toolbar
+    lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        customBar = findViewById(R.id.customActionBar)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        this.setSupportActionBar(customBar)
+        val navController = Navigation.findNavController(this, R.id.myNavHostFragment)
+        NavigationUI.setupActionBarWithNavController(this, navController, binding.drawerLayout)
+        NavigationUI.setupWithNavController(binding.navView, navController)
 
-
-        /*
-        val v1 = Veiculo(0, "Prisma", "Prata", 2017,
-            40000f, 10, true)
-
-        val v2 = Veiculo(0, "Celta", "Preto", 2010,
-            12000f, 18, true)
-
-        val v3 = Veiculo(0, "Voyage", "Branco", 2014,
-            50000f, 3, false)
-
-        val v4 = Veiculo(0, "Jetta", "Vermelho", 2020,
-            80000f, 0, false)
-
-        with(db.veiculoDao()){
-            inserir(v1)
-            inserir(v2)
-            inserir(v3)
-            inserir(v4)
-
-        }*/
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.menu, menu)
-
-        return true
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = Navigation.findNavController(this, R.id.myNavHostFragment)
+        return NavigationUI.navigateUp(navController, binding.drawerLayout)
     }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.title){
-            "Adicionar" -> {
-                Navigation.findNavController(this, R.id.myNavHostFragment).navigate(R.id.action_homeFragment_to_cadastraFragment)
-            }
-        }
-
-
-        return super.onOptionsItemSelected(item)
-    }
-
-    //Fazer utilização do banco com corrotinas do kotlin no lugar de asyncTask
 
 }

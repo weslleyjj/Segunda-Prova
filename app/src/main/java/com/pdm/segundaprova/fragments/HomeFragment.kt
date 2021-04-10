@@ -43,10 +43,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
         recycler_view.apply {
-            // set a LinearLayoutManager to handle Android
-            // RecyclerView behavior
+
             layoutManager = layout
-            // set the custom adapter to the RecyclerView
             adapter = adapterHome
 
         }

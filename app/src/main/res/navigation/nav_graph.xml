@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_homeFragment_to_alteraFragment"
             app:destination="@id/alteraFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_sobreFragment2"
+            app:destination="@id/sobreFragment2" />
     </fragment>
     <fragment
         android:id="@+id/cadastraFragment"
@@ -51,6 +54,14 @@
         <argument
             android:name="idVeiculo"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/sobreFragment2"
+        android:name="com.pdm.segundaprova.fragments.SobreFragment"
+        android:label="SobreFragment" >
+        <action
+            android:id="@+id/action_sobreFragment2_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 
 </navigation>

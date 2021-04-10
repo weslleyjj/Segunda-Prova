@@ -18,4 +18,12 @@
     <string name="adicionar">Adicionar</string>
     <string name="voltar">Voltar</string>
     <string name="editar">Editar</string>
+    <string name="desenvolvido_por">Desenvolvido por:</string>
+    <string name="jodeilson_weslley">Jodeilson Weslley</string>
+    <string name="orientador">Orientador:</string>
+    <string name="taniro_chacon">Taniro Chacon</string>
+    <string name="_2020_2">2020.2</string>
+    <string name="per_odo">Período:</string>
+    <string name="disciplina">Disciplina:</string>
+    <string name="programa_o_para_dispositivos_m_veis">Programação para dispositivos móveis</string>
 </resources>

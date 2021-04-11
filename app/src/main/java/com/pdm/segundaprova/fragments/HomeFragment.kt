@@ -2,13 +2,14 @@ package com.pdm.segundaprova.fragments
 
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.pdm.segundaprova.DialogFragmentMessage
 import com.pdm.segundaprova.R
 import com.pdm.segundaprova.adapters.RecyclerAdapter
 import com.pdm.segundaprova.data.Veiculo
@@ -37,6 +38,8 @@ class HomeFragment : Fragment() {
 
         layout = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
 
+        setHasOptionsMenu(true)
+
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -49,5 +52,23 @@ class HomeFragment : Fragment() {
 
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.options_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.title){
+            "Ajuda" -> {
+                val b = Bundle()
+                b.putString("titulo", "Página Inicial")
+                b.putString("texto", "Navegue por esta tela para visualizar todos os veículos cadastrados" +
+                        "\n\n\n Segure por um tempo para editar o veiculo\n\n\n Toque simples irá mostrar mais detalhes")
+                val dialog = DialogFragmentMessage(b)
+                dialog.show(childFragmentManager,"Dialog")
+            }
+        }
+        return super.onOptionsItemSelected(item)}
 
 }

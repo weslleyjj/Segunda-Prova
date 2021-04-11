@@ -17,7 +17,6 @@ import com.pdm.segundaprova.viewModels.CadastraFragmentViewModel
 class AlteraFragment : Fragment(){
 
     lateinit var binding : AlteraFragmentBinding
-    lateinit var repository : VeiculoRepository
     lateinit var veiculo : Veiculo
 
     override fun onCreateView(
@@ -26,11 +25,11 @@ class AlteraFragment : Fragment(){
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.altera_fragment, container, false)
-        repository = VeiculoRepository(inflater.context)
+
 
         val args = AlteraFragmentArgs.fromBundle(requireArguments())
 
-        veiculo = repository.getDB().veiculoDao().findById(args.idVeiculo)
+        veiculo = VeiculoRepository(inflater.context).getDB().findById(args.idVeiculo)
 
         with(binding){
             modeloEdit.setText(veiculo.modelo)
@@ -53,7 +52,7 @@ class AlteraFragment : Fragment(){
                 prontaEntrega =  binding.pEntregaId.isChecked
             }
 
-            repository.getDB().veiculoDao().atualizar(veiculo)
+            VeiculoRepository(inflater.context).getDB().atualizar(veiculo)
             Navigation.findNavController(it).navigate(R.id.action_alteraFragment_to_homeFragment)
 
         }

@@ -28,7 +28,7 @@ class DetalhesFragment  : Fragment(){
 
         val args = AlteraFragmentArgs.fromBundle(requireArguments())
 
-        veiculo = repository.getDB().veiculoDao().findById(args.idVeiculo)
+        veiculo = VeiculoRepository(inflater.context).getDB().findById(args.idVeiculo)
 
         with(binding){
             modeloEdit.setText(veiculo.modelo)

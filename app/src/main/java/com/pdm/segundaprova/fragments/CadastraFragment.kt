@@ -42,7 +42,7 @@ class CadastraFragment : Fragment(){
                 preco =  binding.precoEdit.text.toString().toFloat()
                 prontaEntrega =  binding.pEntregaId.isChecked
             }
-            repository.getDB().veiculoDao().inserir(viewModel.dados)
+            VeiculoRepository(inflater.context).getDB().inserir(viewModel.dados)
             Navigation.findNavController(it).navigate(R.id.action_cadastraFragment_to_homeFragment)
 
         }

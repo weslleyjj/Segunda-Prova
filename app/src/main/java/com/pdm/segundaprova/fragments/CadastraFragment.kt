@@ -31,7 +31,8 @@ class CadastraFragment : Fragment(){
 
         viewModel = ViewModelProvider(this).get(CadastraFragmentViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_cadastra, container, false)
-        repository = VeiculoRepository(inflater.context)
+
+        repository = VeiculoRepository(inflater.context) // Recebe instância do banco
 
         binding.salvar.setOnClickListener {
             with(viewModel.dados){
@@ -51,7 +52,7 @@ class CadastraFragment : Fragment(){
             Navigation.findNavController(it).navigate(R.id.action_cadastraFragment_to_homeFragment)
         }
 
-        setHasOptionsMenu(true)
+        setHasOptionsMenu(true) // Permite exibição do options menu
 
         return binding.root
     }
@@ -64,6 +65,7 @@ class CadastraFragment : Fragment(){
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.title){
             "Ajuda" -> {
+                //Gera o DialogFragment de acordo com o Bundle passado
                 val b = Bundle()
                 b.putString("titulo", "Cadastrar veículo")
                 b.putString("texto", "Preencha aqui os dados referentes ao veículo que deseja cadastrar" +

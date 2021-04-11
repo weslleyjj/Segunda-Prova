@@ -22,6 +22,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        //Dados que serão exibidos no card, exceto o dado id
         var modelo: TextView
         var ano: TextView
         var preco: TextView
@@ -42,6 +43,7 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
         }
     }
 
+    // Após a criação do viewHolder é feito a atribuição do home_fragment_Cards como view a ser repetida para cada informação
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
         val v = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.home_fragment_cards, viewGroup, false)

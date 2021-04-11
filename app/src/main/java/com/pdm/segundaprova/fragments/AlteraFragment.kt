@@ -26,8 +26,7 @@ class AlteraFragment : Fragment(){
 
         binding = DataBindingUtil.inflate(inflater, R.layout.altera_fragment, container, false)
 
-
-        val args = AlteraFragmentArgs.fromBundle(requireArguments())
+        val args = AlteraFragmentArgs.fromBundle(requireArguments()) // args contém o id do veiculo a ser alterado
 
         veiculo = VeiculoRepository(inflater.context).getDB().findById(args.idVeiculo)
 
@@ -60,7 +59,8 @@ class AlteraFragment : Fragment(){
         binding.cancelar.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_alteraFragment_to_homeFragment)
         }
-        setHasOptionsMenu(true)
+
+        setHasOptionsMenu(true) // Configuração para exibir o options menu neste fragment
         return binding.root
     }
 
@@ -72,6 +72,7 @@ class AlteraFragment : Fragment(){
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.title){
             "Ajuda" -> {
+                //Ao clicar no link de ajuda irá gerar o DialogFragment com os parâmetros passados no bundle
                 val b = Bundle()
                 b.putString("titulo", "Alterar dados do veículo")
                 b.putString("texto", "Escolha os campos de sua preferência para fazer as edições no cadastro do veículo" +

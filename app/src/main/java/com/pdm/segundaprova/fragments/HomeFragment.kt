@@ -69,6 +69,7 @@ class HomeFragment : Fragment() {
                 dialog.show(childFragmentManager,"Dialog")
             }
         }
-        return super.onOptionsItemSelected(item)}
+        return super.onOptionsItemSelected(item)
+    }
 
 }

@@ -1,12 +1,11 @@
 package com.pdm.segundaprova.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.pdm.segundaprova.DialogFragmentMessage
 import com.pdm.segundaprova.R
 import com.pdm.segundaprova.data.Veiculo
 import com.pdm.segundaprova.data.VeiculoRepository
@@ -47,8 +46,28 @@ class DetalhesFragment  : Fragment(){
         binding.editar.setOnClickListener {
             Navigation.findNavController(it).navigate(DetalhesFragmentDirections.actionDetalhesFragmentToAlteraFragment(veiculo.id))
         }
+        setHasOptionsMenu(true)
 
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.options_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.title){
+            "Ajuda" -> {
+                val b = Bundle()
+                b.putString("titulo", "Detalhes do veículo")
+                b.putString("texto", "Nesta tela você tem acesso a visualização de todos os dados do veículo" +
+                        "\n\nCaso deseje mudar alguma informação basta tocar no botão de Editar")
+                val dialog = DialogFragmentMessage(b)
+                dialog.show(childFragmentManager,"Dialog")
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

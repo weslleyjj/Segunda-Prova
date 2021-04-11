@@ -1,13 +1,12 @@
 package com.pdm.segundaprova.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.pdm.segundaprova.DialogFragmentMessage
 import com.pdm.segundaprova.R
 import com.pdm.segundaprova.data.Veiculo
 import com.pdm.segundaprova.data.VeiculoRepository
@@ -62,8 +61,27 @@ class AlteraFragment : Fragment(){
         binding.cancelar.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_alteraFragment_to_homeFragment)
         }
-
+        setHasOptionsMenu(true)
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.options_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.title){
+            "Ajuda" -> {
+                val b = Bundle()
+                b.putString("titulo", "Alterar dados do veículo")
+                b.putString("texto", "Escolha os campos de sua preferência para fazer as edições no cadastro do veículo" +
+                        "\n\nClique em 'Cancelar' para retornar a página inicial e não editar o veículo")
+                val dialog = DialogFragmentMessage(b)
+                dialog.show(childFragmentManager,"Dialog")
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

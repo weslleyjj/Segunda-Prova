@@ -1,14 +1,13 @@
 package com.pdm.segundaprova.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.pdm.segundaprova.DialogFragmentMessage
 import com.pdm.segundaprova.R
 import com.pdm.segundaprova.adapters.RecyclerAdapter
 import com.pdm.segundaprova.data.Veiculo
@@ -52,7 +51,29 @@ class CadastraFragment : Fragment(){
             Navigation.findNavController(it).navigate(R.id.action_cadastraFragment_to_homeFragment)
         }
 
+        setHasOptionsMenu(true)
+
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.options_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.title){
+            "Ajuda" -> {
+                val b = Bundle()
+                b.putString("titulo", "Cadastrar veículo")
+                b.putString("texto", "Preencha aqui os dados referentes ao veículo que deseja cadastrar" +
+                        " \n\nApós o cadastro você será redirecionado para a tela de visualização de veículos" +
+                        "\n\nClique em 'Cancelar' para retornar a página inicial e não salvar o veículo")
+                val dialog = DialogFragmentMessage(b)
+                dialog.show(childFragmentManager,"Dialog")
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

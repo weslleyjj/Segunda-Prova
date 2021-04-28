@@ -1,4 +1,4 @@
-package com.pdm.segundaprova.fragments
+package com.pdm.segundaprova.ui.cadastra
 
 import android.os.Bundle
 import android.view.*
@@ -6,21 +6,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.pdm.segundaprova.DialogFragmentMessage
+import com.pdm.segundaprova.dialogs.DialogFragmentMessage
 import com.pdm.segundaprova.R
-import com.pdm.segundaprova.adapters.RecyclerAdapter
-import com.pdm.segundaprova.data.Veiculo
-import com.pdm.segundaprova.data.VeiculoRepository
+import com.pdm.segundaprova.repository.VeiculoRepository
 import com.pdm.segundaprova.databinding.FragmentCadastraBinding
-import com.pdm.segundaprova.viewModels.CadastraFragmentViewModel
-import com.pdm.segundaprova.viewModels.HomeFragmentViewModel
-import kotlinx.android.synthetic.main.fragment_home.*
-import java.util.Observer
 
 class CadastraFragment : Fragment(){
 
-    lateinit var viewModel: CadastraFragmentViewModel
+    lateinit var viewModel: CadastraVeiculoViewModel
     lateinit var binding : FragmentCadastraBinding
     lateinit var repository : VeiculoRepository
 
@@ -29,8 +22,15 @@ class CadastraFragment : Fragment(){
             savedInstanceState: Bundle?
     ): View? {
 
-        viewModel = ViewModelProvider(this).get(CadastraFragmentViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(CadastraVeiculoViewModel::class.java)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_cadastra, container, false)
+
+        viewModel.eventCadastraVeiculo.observe(viewLifecycleOwner, { hasChanged ->
+            if(hasChanged){
+                Navigation.findNavController(requireView()).navigate(R.id.action_cadastraFragment_to_homeFragment)
+                viewModel.onCadastraVeiculoComplete()
+            }
+        })
 
         repository = VeiculoRepository(inflater.context) // Recebe instância do banco
 

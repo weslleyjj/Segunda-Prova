@@ -2,19 +2,12 @@ package com.pdm.segundaprova
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.ActivityNavigatorDestinationBuilder
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import androidx.room.Room
-import com.pdm.segundaprova.data.AppDatabase
-import com.pdm.segundaprova.data.Veiculo
+import com.pdm.segundaprova.model.Veiculo
+import com.pdm.segundaprova.repository.VeiculoRepository
 import com.pdm.segundaprova.databinding.ActivityMainBinding
-import com.pdm.segundaprova.fragments.CadastraFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +21,22 @@ class MainActivity : AppCompatActivity() {
         val navController = Navigation.findNavController(this, R.id.myNavHostFragment)
         NavigationUI.setupActionBarWithNavController(this, navController, binding.drawerLayout)
         NavigationUI.setupWithNavController(binding.navView, navController)
+
+
+            val v1 = Veiculo(0, "Prisma", "Prata", 2017,
+                40000f, 10, true)
+            val v2 = Veiculo(0, "Celta", "Preto", 2010,
+                12000f, 18, true)
+            val v3 = Veiculo(0, "Voyage", "Branco", 2014,
+                50000f, 3, false)
+            val v4 = Veiculo(0, "Jetta", "Vermelho", 2020,
+                80000f, 0, false)
+            with(VeiculoRepository(this).getDB()){
+                inserir(v1)
+                inserir(v2)
+                inserir(v3)
+                inserir(v4)
+            }
 
 
     }

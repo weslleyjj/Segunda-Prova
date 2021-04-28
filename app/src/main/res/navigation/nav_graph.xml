@@ -6,7 +6,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.pdm.segundaprova.fragments.HomeFragment"
+        android:name="com.pdm.segundaprova.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/cadastraFragment"
-        android:name="com.pdm.segundaprova.fragments.CadastraFragment"
+        android:name="com.pdm.segundaprova.ui.cadastra.CadastraFragment"
         android:label="CadastraFragment" >
         <action
             android:id="@+id/action_cadastraFragment_to_homeFragment"
@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/alteraFragment"
-        android:name="com.pdm.segundaprova.fragments.AlteraFragment"
+        android:name="com.pdm.segundaprova.ui.altera.AlteraFragment"
         android:label="AlteraFragment" >
         <action
             android:id="@+id/action_alteraFragment_to_homeFragment"
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/detalhesFragment"
-        android:name="com.pdm.segundaprova.fragments.DetalhesFragment"
+        android:name="com.pdm.segundaprova.ui.detalhes.DetalhesFragment"
         android:label="DetalhesFragment" >
         <action
             android:id="@+id/action_detalhesFragment_to_alteraFragment"

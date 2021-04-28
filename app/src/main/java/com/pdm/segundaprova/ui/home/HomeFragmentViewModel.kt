@@ -1,13 +1,10 @@
-package com.pdm.segundaprova.viewModels
+package com.pdm.segundaprova.ui.home
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.room.Room
-import com.pdm.segundaprova.data.AppDatabase
-import com.pdm.segundaprova.data.Veiculo
-import com.pdm.segundaprova.data.VeiculoRepository
+import com.pdm.segundaprova.model.Veiculo
+import com.pdm.segundaprova.repository.VeiculoRepository
 
 class HomeFragmentViewModel(application : Application) : AndroidViewModel(application) {
 

@@ -1,16 +1,16 @@
-package com.pdm.segundaprova.fragments
+package com.pdm.segundaprova.ui.detalhes
 
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.pdm.segundaprova.DialogFragmentMessage
+import com.pdm.segundaprova.dialogs.DialogFragmentMessage
 import com.pdm.segundaprova.R
-import com.pdm.segundaprova.data.Veiculo
-import com.pdm.segundaprova.data.VeiculoRepository
-import com.pdm.segundaprova.databinding.AlteraFragmentBinding
+import com.pdm.segundaprova.model.Veiculo
+import com.pdm.segundaprova.repository.VeiculoRepository
 import com.pdm.segundaprova.databinding.FragmentDetalhesBinding
+import com.pdm.segundaprova.ui.altera.AlteraFragmentArgs
 
 class DetalhesFragment  : Fragment(){
 

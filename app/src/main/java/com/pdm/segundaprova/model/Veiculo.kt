@@ -1,4 +1,4 @@
-package com.pdm.segundaprova.data
+package com.pdm.segundaprova.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

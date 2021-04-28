@@ -1,4 +1,4 @@
-package com.pdm.segundaprova.fragments
+package com.pdm.segundaprova.ui.altera
 
 import android.os.Bundle
 import android.view.*
@@ -6,18 +6,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.pdm.segundaprova.DialogFragmentMessage
+import com.pdm.segundaprova.dialogs.DialogFragmentMessage
 import com.pdm.segundaprova.R
-import com.pdm.segundaprova.data.Veiculo
-import com.pdm.segundaprova.data.VeiculoRepository
+import com.pdm.segundaprova.model.Veiculo
+import com.pdm.segundaprova.repository.VeiculoRepository
 import com.pdm.segundaprova.databinding.AlteraFragmentBinding
-import com.pdm.segundaprova.databinding.FragmentCadastraBinding
-import com.pdm.segundaprova.viewModels.CadastraFragmentViewModel
 
 class AlteraFragment : Fragment(){
 
     lateinit var binding : AlteraFragmentBinding
     lateinit var veiculo : Veiculo
+    lateinit var viewModel: AlteraVeiculoViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -25,10 +24,21 @@ class AlteraFragment : Fragment(){
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.altera_fragment, container, false)
+        viewModel = ViewModelProvider(this).get(AlteraVeiculoViewModel::class.java)
 
         val args = AlteraFragmentArgs.fromBundle(requireArguments()) // args contém o id do veiculo a ser alterado
 
         veiculo = VeiculoRepository(inflater.context).getDB().findById(args.idVeiculo)
+
+
+        viewModel.eventAlteraVeiculo.observe(viewLifecycleOwner, { hasChanged ->
+            if(hasChanged){
+                Navigation.findNavController(requireView()).navigate(R.id.action_alteraFragment_to_homeFragment)
+                viewModel.onAlteraVeiculoComplete()
+            }
+        })
+
+
 
         with(binding){
             modeloEdit.setText(veiculo.modelo)

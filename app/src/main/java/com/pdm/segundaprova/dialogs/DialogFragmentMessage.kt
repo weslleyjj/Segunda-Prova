@@ -1,4 +1,4 @@
-package com.pdm.segundaprova
+package com.pdm.segundaprova.dialogs
 
 import android.app.AlertDialog
 import android.app.Dialog

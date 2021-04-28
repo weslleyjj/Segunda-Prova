@@ -1,8 +1,8 @@
-package com.pdm.segundaprova.data
+package com.pdm.segundaprova.database
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.*
+import com.pdm.segundaprova.model.Veiculo
 
 @Dao
 interface VeiculoDAO {

@@ -1,7 +1,9 @@
-package com.pdm.segundaprova.data
+package com.pdm.segundaprova.repository
 
 import android.content.Context
 import androidx.room.Room
+import com.pdm.segundaprova.database.AppDatabase
+import com.pdm.segundaprova.database.VeiculoDAO
 
 //Open para que se possa usar o repository de maneira estática entre os fragments
 open class VeiculoRepository(context: Context) {
@@ -15,7 +17,7 @@ open class VeiculoRepository(context: Context) {
     }
 
     //Método para obtenção de acesso ao db
-    open fun getDB() : VeiculoDAO{
+    open fun getDB() : VeiculoDAO {
         return db.veiculoDao();
     }
 
